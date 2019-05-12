@@ -4,7 +4,6 @@ public class Car extends Product{
 	    private double topSpeed;
 	    private double price;
 	    private Engine eng; 
-	    private static int carCounter=0; 
 
 	    public Car() { 
 	    	super();
@@ -13,20 +12,15 @@ public class Car extends Product{
 	        this.setTopSpeed(0.0);
 	        this.setPrice(0.0);
 	        this.eng = new Engine();
-	        carCounter++;
+	    
 	    }
-	    public Car(int modelYear, String model, double topSpeed, double price, Engine eng) {
+	    public Car(int ID,String name,int modelYear, String model, double topSpeed, double price, Engine eng) {
+	    	super(ID,name,20);
 	        this.setModelYear(modelYear);
 	        setModel(model);
 	        this.topSpeed = topSpeed;
 	        setPrice(price);
-	        this.eng = eng;
-	        carCounter++;
-	        
-	    }
-
-	    public static int getCarCounter() {
-	        return carCounter; 
+	        this.eng = eng;	        
 	    }
 
 	    public Engine getEng() {
@@ -72,6 +66,10 @@ public class Car extends Product{
 	        System.out.println("  -->VOLUME         : " + eng.getVolume());
 	        System.out.println("  --># of CYLINDERS : " + eng.getNumberOfCylinders());
 	        System.out.println();
+	    }
+	    @Override
+	    public double calculateActualPrice() {
+	    	return price*1.25;
 	    }
 	
 }

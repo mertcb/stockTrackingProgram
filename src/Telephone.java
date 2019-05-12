@@ -3,8 +3,9 @@ public class Telephone extends Product {
     private String model;
     private int modelYear;
     private int batteryPower;
-    private int priceOfTelephone;
-    private Processor tel;
+    private double price;
+    
+	private Processor tel;
 
     public Telephone()
     {
@@ -12,16 +13,24 @@ public class Telephone extends Product {
         setModel("Unknown");
         setModelYear(0);
         setBatteryPower(0);
-        setPriceOfTelephone(0);
+        setPrice(0);
         this.tel=new Processor();
     }
-    public Telephone(String model, int modelYear, int batteryPower, int priceOfTelephone) {
-        this.model = model;
+    public Telephone(int ID,String name,String model, int modelYear, int batteryPower, double price,double speed,int numberOfProcessor) {
+        super(ID,name,2);
+    	this.model = model;
         this.modelYear = modelYear;
         this.batteryPower = batteryPower;
-        this.priceOfTelephone = priceOfTelephone;
-        this.tel= tel;
+        this.price = price;
+        this.tel = new Processor(speed,numberOfProcessor);
     }
+    public double getPrice() {
+		return price;
+	}
+	public void setPrice(double price) {
+		this.price = price;
+	}
+
     public String getModel() {
         return model;
     }
@@ -46,22 +55,20 @@ public class Telephone extends Product {
         this.batteryPower = batteryPower;
     }
 
-    public int getPriceOfTelephone() {
-        return priceOfTelephone;
-    }
-
-    public void setPriceOfTelephone(int priceOfTelephone) {
-        this.priceOfTelephone = priceOfTelephone;
-    }
+   
     public void printInfo()
     {
         System.out.println(" Model: "+ model);
-        System.out.println(" Model year:"+ modelYear);
+        System.out.println(" Model year: "+ modelYear);
         System.out.println(" Battery Power: "+batteryPower);
-        System.out.println(" Price is:"+priceOfTelephone);
+        System.out.println(" Price is: "+ calculateActualPrice());
         System.out.println(" Name of the Processor: "+tel.getName());
         System.out.println(" Processor Speed: "+tel.getSpeed());
         System.out.println(" Number of Processor: "+tel.getNumberOfProcessor());
         System.out.println();
+    }
+    @Override
+    public double calculateActualPrice() {
+    	return price*1.35;
     }
 }

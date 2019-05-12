@@ -1,4 +1,4 @@
 public interface Order {
-	public void validate();
+	public boolean validate();
 	public void process();
 }

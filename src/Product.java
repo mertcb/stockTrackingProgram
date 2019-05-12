@@ -12,9 +12,14 @@ public abstract class Product {
 	public Product(int ID,String name,int capacity){
 		this.ID = ID;
 		this.name = name;
-		this.capacity = capacity;
+		if(capacity<0) {
+			System.out.println("Capacity cannot be less than zero.");
+			this.capacity = 0;
+		}
+		else{
+			this.capacity = capacity;
+		}
 	}
-
 	public String getName() {
 		return name;
 	}
@@ -30,6 +35,6 @@ public abstract class Product {
 	public int getCapacity() {
 		return capacity;
 	}
-	
-	
+	public abstract double calculateActualPrice();
+	public abstract void printInfo();
 }	

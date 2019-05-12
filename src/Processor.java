@@ -1,4 +1,4 @@
-public class Processor extends Product {
+public class Processor {
 
     private double Speed;
     private int numberOfProcessor;
@@ -10,8 +10,7 @@ public class Processor extends Product {
         this.numberOfProcessor=0;
         this.name="Unknown";
     }
-    public Processor(int ID,double speed, int numberOfProcessor, String name) {
-        super(ID,name,2);
+    public Processor(double speed, int numberOfProcessor) {
     	Speed = speed;
         this.numberOfProcessor = numberOfProcessor;
     }
